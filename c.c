@@ -22,11 +22,8 @@ int main() {
     int arrayInvert[3];
     for(l = 0; l <= 2; l++ )
     {
-        arrayInvert[l] = array[3-l-1];
+        arrayInvert[l] = array[2-l];
     }
-    for (int k = 0; k < 3; k++) {
-        printf("%d ", arrayInvert[k]);
-    }
-    putchar('\n');
+    printf("%d %d %d\n", arrayInvert[0], arrayInvert[1], arrayInvert[2]);
     return 0;
 }

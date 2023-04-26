@@ -72,18 +72,11 @@ int main() {
     int a[n]; // array a do tamanho do número de comandos
     while(i<n){
         assert(scanf("%s", s));//caso na string s não estejam os carateres 'C','B','D' ou 'E' a função resultadonumerico não irá mudar a posição com que iniciou a função
-        if (i == 0){
-            a[i] = resultadonumerico(s,5); //função definida acima começa sempre na tecla 5
-        }
-        else{
-            a[i] = resultadonumerico(s,a[i-1]); // através da chamada recursiva da função resultadonumerico é armazenado no array com a tecla onde parou na ultima vez 
-        }
-
+        if (i == 0) a[i] = resultadonumerico(s,5); //função definida acima começa sempre na tecla 5
+        else a[i] = resultadonumerico(s,a[i-1]); // através da chamada recursiva da função resultadonumerico é armazenado no array com a tecla onde parou na ultima vez 
         i++;
     }
-    for (int j = 0; j < n; j++) {
-        printf("%d",a[j]);//imprime-se todos os elementos do array a sem espaços
-    }
+    for (int j = 0; j < n; j++) printf("%d",a[j]);//imprime-se todos os elementos do array a sem espaços
     printf("\n");
     return 0;
 }

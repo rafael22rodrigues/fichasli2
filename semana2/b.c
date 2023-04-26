@@ -1,13 +1,11 @@
 #include <stdio.h>
 #include <assert.h>
-
 /*
     Um elevador tem 2 botões, o de subir um andar e o de descer um andar.
 
     Com este programa pretende-se descobrir qual é a posição final desse elevador.
     Consideremos o botão de subida com o valor 1 e o de descida com o valor -1.
 */
-
 int main() {
     int c;// andar inicial
     assert(scanf("%d", &c) == 1);
@@ -23,15 +21,11 @@ int main() {
             array[i] = b; // o array armazena todos os valores de b ao longo do ciclo
             i++;
         } else return 0;
-
     }
     int r = c;//começa no andar inicial definido anteriormente
     for (int j = 0; j < n; j++) {
-        if (array[j] == -1 && r > 0){ // se na posição j está o valor -1 e o r atual é um número positivo, r diminui uma unidade (ou seja, o elevador desceu 1 andar)
-            r--;
-        } else if (array[j] == 1 && r < a){ // se na posição j está o valor 1 e o r atual é um número menor que a (o último andar), r aumenta uma unidade (ou seja, o elevador subiu 1 andar)
-            r++;
-        }
+        if (array[j] == -1 && r > 0) r--;     // se na posição j está o valor -1 e o r atual é um número positivo, r diminui uma unidade (ou seja, o elevador desceu 1 andar)         
+        else if (array[j] == 1 && r < a) r++; // se na posição j está o valor 1 e o r atual é um número menor que a (o último andar), r aumenta uma unidade (ou seja, o elevador subiu 1 andar)
     }
     printf("%d\n", r);// imprime-se o valor final de r
     return 0;

@@ -11,18 +11,11 @@
 
 */
 int main() {
-    int soldadoA, soldadoB, soldadoC, soldadoD, soldadoE;
+    int soldadoA, soldadoB, soldadoC, soldadoD, soldadoE, maximo_de_biscoitos = 0;
     assert(scanf("%d %d %d %d %d", &soldadoA, &soldadoB, &soldadoC, &soldadoD, &soldadoE) == 5); //através do scanf são lidos 5 números inteiros positivos e através do assert verifica se são realmente números inteiros positivos
     int soldados[5]={soldadoA, soldadoB, soldadoC, soldadoD, soldadoE}; //os números lidos são convertidos num array de 5 elementos com a mesma ordem pela qual foram inseridos
-    int maximo_de_biscoitos = 0, soldado_escolhido = 1;
-    for (int i = 0; i < 5; i++) if(maximo_de_biscoitos < soldados[i]) maximo_de_biscoitos = soldados[i];
-    for (int i = 0; i < 5; i++)
-    {
-        if(maximo_de_biscoitos == soldados[i]) break;
-        else soldado_escolhido++;
-    }
-    printf("%d\n", soldado_escolhido);
-    return 0;
+    for (int i = 0; i < 5; i++)  if(maximo_de_biscoitos < soldados[i]) maximo_de_biscoitos = soldados[i];
+    for (int i = 1; i <= 5; i++) if(maximo_de_biscoitos == soldados[i-1]) {printf("%d\n", i); return 0;}
 }
 /*
 Input:

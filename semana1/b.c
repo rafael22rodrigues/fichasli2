@@ -8,7 +8,6 @@
     Essas duas formações são toleráveis para a rainha. 
     Se não estivem por ordem crescente ou decrescente: Cortem-Ihes a cabeça! 
 
-/*
     O programa deve ler uma linha para cada soldado. 
     Cada linha contém um número inteiro positivo.
 
@@ -18,7 +17,7 @@
 int main() {
     int soldadoA, soldadoB, soldadoC;
     assert(scanf("%d %d %d", &soldadoA, &soldadoB, &soldadoC) == 3); //através do scanf são lidos as 3 alturas correspondentes aos soldados e através do assert verifica se são realmente números inteiros
-    if(((soldadoA <= soldadoB) && (soldadoB <= soldadosC)) || ((soldadoA >= soldadoB)&&(soldadoB >= soldadosC)))printf("%s\n", "OK"); // caso se verifique que os soldados estão por ordem crescente ou decrescente de altura ou se têm todos os mesmo tamanho, imprime-se na tela a palavra "OK"
+    if(((soldadoA <= soldadoB) && (soldadoB <= soldadoC)) || ((soldadoA >= soldadoB)&&(soldadoB >= soldadoC))) printf("%s\n", "OK"); // caso se verifique que os soldados estão por ordem crescente ou decrescente de altura ou se têm todos os mesmo tamanho, imprime-se na tela a palavra "OK"
     else printf("%s\n", "NAO"); // caso contrário imprime-se a palavra "NAO"
     return 0;
 }

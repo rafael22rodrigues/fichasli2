@@ -55,12 +55,8 @@ int resultadonumerico(char s[], int l){
 }
 /*
 
-O programa deve ler:
-    Uma linha com um número N que corresponde ao número de linhas
-    N linhas tendo cada uma comandos de direção (no máximo são 20 comandos)
-
-E imprimir:
-    uma linha com o código da fechadura
+REQUISITOS: Dados o numero de comando, e a descrição do caminho percorrido no teclado (desde a tecla 5), 
+deve retornar o número da tecla onde parou no fim do caminho percorrido
 
 */
 
@@ -68,15 +64,17 @@ int main() {
     int n; //número de comandos
     assert(scanf("%d",&n) == 1);
     int i = 0;// admite-se que o númro de comandos é um número inteiro positivo, caso contrário o programa encerra retornando 0
-    char s[20]; // a string s só pode no máximo ter 20 carateres
-    int a[n]; // array a do tamanho do número de comandos
+    char caminho[20]; // a string caminho só pode no máximo ter 20 carateres
+    int fim_dos_caminhos[n]; // array fim_dos_caminhos do tamanho do número de comandos
     while(i<n){
-        assert(scanf("%s", s));//caso na string s não estejam os carateres 'C','B','D' ou 'E' a função resultadonumerico não irá mudar a posição com que iniciou a função
-        if (i == 0) a[i] = resultadonumerico(s,5); //função definida acima começa sempre na tecla 5
-        else a[i] = resultadonumerico(s,a[i-1]); // através da chamada recursiva da função resultadonumerico é armazenado no array com a tecla onde parou na ultima vez 
+        //Lê-se 
+        assert(scanf("%s", s));
+        //caso na string caminho não estejam os carateres 'C','B','D' ou 'E' a função resultadonumerico não irá mudar a posição com que iniciou a função
+        if (i == 0) a[i] = resultadonumerico(caminho,5); //função definida acima começa sempre na tecla 5
+        else a[i] = resultadonumerico(caminho,fim_dos_caminhos[i-1]); // através da chamada recursiva da função resultadonumerico é armazenado no array fim_dos_caminhos com a tecla onde parou na ultima vez 
         i++;
     }
-    for (int j = 0; j < n; j++) printf("%d",a[j]);//imprime-se todos os elementos do array a sem espaços
+    for (int j = 0; j < n; j++) printf("%d",fim_dos_caminhos[j]);//imprime-se todos os elementos do array fim_dos_caminhos sem espaços
     printf("\n");
     return 0;
 }

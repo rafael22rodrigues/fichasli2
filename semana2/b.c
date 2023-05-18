@@ -5,33 +5,44 @@
 
     Com este programa pretende-se descobrir qual é a posição final desse elevador.
     Consideremos o botão de subida com o valor 1 e o de descida com o valor -1.
+
+    REQUISITO: Dado, pela respetiva ordem, os numeros, do andar onde o elevador começa o percurso, o último andar da respetiva construção, o número de comandos 
+    e por fim as etapas ao longo do percurso (o número de etapas tem que ser o mesmo que o de comandos)  
 */
 int main() {
-    int c;// andar inicial
-    assert(scanf("%d", &c) == 1);
-    int a;// último andar
-    assert(scanf("%d", &a)==1);
-    int n;//número de comandos
+    int andar_inicial;
+    //lê-se o número do andar inicial através do scanf, já o assert verifica se o andar_inicial é mesmo um número inteiro
+    assert(scanf("%d", &andar_inicial) == 1);
+    int ultimo_andar;
+    //lê-se o número do último andar através do scanf, já o assert verifica se o ultimo_andar é mesmo um número inteiro
+    assert(scanf("%d", &ultimo_andar)==1);
+    int n;
+    //lê-se o número de comandos através do scanf, já o assert verifica se o numero de comandos é mesmo um número inteiro
     assert(scanf("%d", &n) == 1);
-    int i = 0, b; // admite-se que o número de comandos é um número inteiro positivo caso contrário imprime-se na tela o andar inicial
-    int array[n];//array do tamanho do número de comandos
+    int i = 0, etapa; // admite-se que o número de comandos é um número inteiro positivo caso contrário imprime-se na tela o andar inicial
+    int percurso[n];//o percurso do tamanho do número de comandos
     while (i < n){
-        assert(scanf("%d", &b) == 1);//o valor de b só pode ser 1 ou -1 caso contrário o programa encerra retornando 0
-        if(b == 1 || b == -1){
-            array[i] = b; // o array armazena todos os valores de b ao longo do ciclo
+        //lê-se o número da etapa através do scanf, já o assert verifica se o valor da etapa é mesmo um número inteiro
+        assert(scanf("%d", &etapa) == 1);
+        //o valor de etapa só pode ser 1 ou -1 caso contrário o programa encerra retornando 0
+        if(etapa == 1 || etapa == -1){
+            percurso[i] = etapa; // o  armazena todos os valores das etapas ao longo do ciclo
             i++;
         } else return 0;
     }
-    int r = c;//começa no andar inicial definido anteriormente
+    int paragem = andar_inicial; //começa no andar inicial definido anteriormente
     for (int j = 0; j < n; j++) {
-        if (array[j] == -1 && r > 0) r--;     // se na posição j está o valor -1 e o r atual é um número positivo, r diminui uma unidade (ou seja, o elevador desceu 1 andar)         
-        else if (array[j] == 1 && r < a) r++; // se na posição j está o valor 1 e o r atual é um número menor que a (o último andar), r aumenta uma unidade (ou seja, o elevador subiu 1 andar)
+        if (percurso[j] == -1 && paragem > 0) paragem--;     // se na posição j está o valor -1 e a paragem atual é um número positivo, a paragem diminui uma unidade (ou seja, o elevador desceu 1 andar)         
+        else if (percurso[j] == 1 && paragem < ultimo_andar) paragem ++; // se na posição j está o valor 1 e a paragem atual é um número menor que a (o último andar), a paragem aumenta uma unidade (ou seja, o elevador subiu 1 andar)
     }
-    printf("%d\n", r);// imprime-se o valor final de r
+    printf("%d\n", paragem);// imprime-se o valor final onde o elevador para
     return 0;
 }
 
 /*
+
+Testes (Cenários Testados):
+
 Input:
 3
 8
